@@ -22,9 +22,26 @@ Painting Board made with VanilaJS
 -   const context = document.getElementById('canvas').getContext('2d'); : 2d용
     context를 얻음. context는 canvas 태그 사이에 있는 pixel에 접근하게 됨.
     (<canvas> context </canvas>)
--   선 그리기 : canvas의 path 참조
+-   선 그리기 : canvas의 path 참조. path는 line이다!
     (https://developer.mozilla.org/ko/docs/Web/HTML/Canvas/Tutorial/Drawing_shapes#%EA%B2%BD%EB%A1%9C_%EA%B7%B8%EB%A6%AC%EA%B8%B0)
--   1. beginPath()로 경로 생성(시작점 지정)
--   2. moveTo()로 시작점 위치 옮김
--   3. lineTo(x,y)로 현재 path 시작점에서 (x,y) 끝점까지 직선을 그린다
+-   1. beginPath()로 경로 생성(시작점(0,0) 지정)
+-   2. moveTo(a,b)로 시작점 위치 옮김
+-   3-1. lineTo(x1,y1)로 이전 path의 시작점(a,b)에서 (x1,y1) 끝점을 잇는 직선을
+    만든다(눈에 안보임)
+-   4-1. stroke()로 실제로 획을 긋는다(눈에 보임)
+-   3-2. lineTo(x2,y2)로 이전 path의 시작점(x1, y1)에서 (x2,y2) 를 잇는 직선을만
+    든다
+-   4-2. stroke()로 실제로 획을 긋는다(눈에 보임)
+-   (5. closePath()를 하면 lineTo(x',y')를 기준으로 (x',y') -> (a,b)로 연결되는
+    직선이 생성된다. 시작점이 고정되고 마우스가 움직인 궤적을 끝점으로 하는 직선
+    이 생김)
 -   하지만 그려지지 않았다!
+
+-   canvas의 특성 때문임.
+    (https://stackoverflow.com/questions/43853119/javascript-wrong-mouse-position-when-drawing-on-canvas)
+-   canvas는 두가지 size 특성을 가짐
+-   1. pixel에서의 해상도 (canvas.width, canvas.height, 숫자값)
+-   2. CSS에서 canvas보여줄 때 화면 크기(canvas.style.width,
+       canvas.style.height, 문자열. "100%", "100px" 등으로 표기)
+-   이 두가지는 연관있지 않고 독립적임.
+-   기본적으로 canvas 해상도는 width=300, height=150 으로 되어 있음.
