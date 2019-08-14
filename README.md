@@ -66,3 +66,6 @@ Painting Board made with VanilaJS
 
 -   **fill 버튼을 누르면 paint 버튼, paint 버튼을 누르면 fill 버튼으로 바뀌게 하
     자**
+-   fill 버튼을 누르면 paint버튼으로 변경 하고 canvas를 클릭했을 때 canvas에 색
+    칠되도록 한다. -> ctx.fillRect(x,y,width,height)
+-   fill 상태인지 아닌지를 확인하기 위한 변수 filling을 만들자
