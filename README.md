@@ -45,3 +45,16 @@ Painting Board made with VanilaJS
        canvas.style.height, 문자열. "100%", "100px" 등으로 표기)
 -   이 두가지는 연관있지 않고 독립적임.
 -   기본적으로 canvas 해상도는 width=300, height=150 으로 되어 있음.
+
+-   선의 색을 바꿔보자
+-   원형으로 만든 색칠된 div의 class를 jsColor로 주고 그 class에 해당하는 객체를
+    받아서 출력해보니 HTMLCollection 객체들로 나옴.
+-   -> 객체들을 배열의 원소로 묶어보자 : Array.from()
+    (https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
+-   배열의 각 원소에 접근할 때 : forEach()
+-   Array.from(colors).forEach(color => color.addEventListener("click",
+    handleColorClick)) : 원소의 이름을 color로 함, => 옆에는 각 원소(color) 가
+    할 행동(함수)을 써주면 됨.
+-   handleColorClick 함수에서 console.log(event.target.style); 를 찍으면
+    CSSStyleDeclaration 이라는 객체를 리턴 받음. 얘는 CSS로 정의한 요소들을 다
+    갖고 있는가봄
